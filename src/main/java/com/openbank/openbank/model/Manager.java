@@ -16,7 +16,9 @@ public class Manager {
     private int id;
     private String usuario;
     private String password;
-    private String correo;
+    private String correo;    
+    @OneToMany(targetEntity = Client.class, mappedBy = "gestor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Client> clients = new ArrayList<Client>();
 
     public Manager() {}
@@ -60,17 +62,15 @@ public class Manager {
         this.correo = correo;
     }
 
-
-    @OneToMany(targetEntity = Client.class, mappedBy = "gestor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    public List<Client> getClients() {
-      return clients;
-    }
-
     public void addCliente(Client client) {
         clients.add(client);
         client.setManager(this);
     }
+
+    public List<Client> getClients() {
+      return clients;
+    }
+
 
     public void setClientes(ArrayList<Client> clients) {
       this.clients = clients;

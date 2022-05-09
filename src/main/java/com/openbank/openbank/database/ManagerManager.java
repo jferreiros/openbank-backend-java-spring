@@ -34,45 +34,45 @@ public class ManagerManager {
 
     public List<Manager> read() {
 		Session session = sessionFactory.openSession();
-    	Query<Manager> query = session.createQuery("select g from Manager g", Manager.class);
-		List<Manager> gestores = query.getResultList();
+    	Query<Manager> query = session.createQuery("select m from Manager m", Manager.class);
+		List<Manager> managers = query.getResultList();
     	session.close();
-		return gestores;
+		return managers;
 	}
 
-	public Manager read(Long id) {
+	public Manager read(int id) {
 		Session session = sessionFactory.openSession();
-	    Manager gestor = session.get(Manager.class, id);
+	    Manager manager = session.get(Manager.class, id);
 	    session.close();
-	    return gestor;
+	    return manager;
 	}
 
-    public Manager create(Manager gestor) {
+    public Manager create(Manager manager) {
     	Session session = sessionFactory.openSession();
     	session.beginTransaction();
-    	Serializable id = session.save(gestor);
+    	Serializable id = session.save(manager);
     	session.getTransaction().commit();
     	session.close();
-    	gestor.setId((int) id);
-    	return gestor;
+    	manager.setId((int) id);
+    	return manager;
     }
 
-    public Manager update(Manager gestor) {
+    public Manager update(Manager manager) {
     	Session session = sessionFactory.openSession();
     	session.beginTransaction();
-    	session.update(gestor);
+    	session.update(manager);
     	session.getTransaction().commit();
     	session.close();
-    	return gestor;
+    	return manager;
     }
 
-    public Manager delete(Manager gestor) {
+    public Manager delete(Manager manager) {
     	Session session = sessionFactory.openSession();
     	session.beginTransaction();
-    	session.delete(gestor);
+    	session.delete(manager);
     	session.getTransaction().commit();
     	session.close();
-    	return gestor;
+    	return manager;
     }
     
 }

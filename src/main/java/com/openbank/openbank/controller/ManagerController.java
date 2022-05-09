@@ -7,6 +7,7 @@ import com.openbank.openbank.database.ManagerManager;
 import com.openbank.openbank.model.Manager;
 import com.openbank.openbank.model.Client;
 import com.openbank.openbank.model.ManagerResponse;
+import com.openbank.openbank.model.ManagerUpdateRequest;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -28,7 +29,7 @@ public class ManagerController {
     }
 
     @GetMapping("/managers/{id}")
-    public Manager getGestoresById(@PathVariable Long id) {
+    public Manager getGestoresById(@PathVariable int id) {
         try {
             return managerManager.read(id);
         } catch (Exception e) {
@@ -36,31 +37,24 @@ public class ManagerController {
         }
     }
 
-    // @PostMapping("/managers")
-    // public ManagerResponse postGestores(@RequestBody Manager manager) {
-    //     try {
+    @PostMapping("/managers")
+    public ManagerResponse postGestores(@RequestBody Manager manager) {
+        try {
+            return new ManagerResponse(managerManager.create(manager));
+        } catch (Exception exception) {
+            return new ManagerResponse(exception);
+        }
+    }
 
-    //         ArrayList<Client> listClients = new ArrayList<Client>(Arrays.asList(
-    //                 new Client ("Mak", "1234", "ma@gmail.com"),
-    //                 new Client ("Mik", "1234", "m@gmail.com")));
-
-    //         manager.setClientes(listClients);
-
-    //         return new ManagerResponse(managerManager.create(manager));
-    //     } catch (Exception exception) {
-    //         return new ManagerResponse(exception);
-    //     }
-    // }
-
-    // @PutMapping("/managers")
-    // public ManagerResponse putGestores(@RequestBody ManagerUpdateRequest managerRequest) {
-    //     try {
-    //         Manager manager = managerRequest.getGestor();
-    //         manager.setClientes(managerRequest.getClientes());
-    //         return new ManagerResponse(managerManager.update(manager));
-    //     } catch (Exception exception) {
-    //         return new GestorResponse(exception);
-    //     }
-    // }
+    @PutMapping("/managers")
+    public ManagerResponse putGestores(@RequestBody ManagerUpdateRequest managerRequest) {
+        try {
+            Manager manager = managerRequest.getGestor();
+            manager.setClientes(managerRequest.getClientes());
+            return new ManagerResponse(managerManager.update(manager));
+        } catch (Exception exception) {
+            return new ManagerResponse(exception);
+        }
+    }
 
 }
