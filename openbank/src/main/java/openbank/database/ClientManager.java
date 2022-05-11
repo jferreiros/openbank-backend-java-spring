@@ -42,7 +42,7 @@ public class ClientManager {
 
 	public Client read(int id) {
         Session session = sessionFactory.openSession();
-        Client client = session.get(Client.class, id);
+        Client client = session.find(Client.class, id);
         session.close();
         return client;
     }
