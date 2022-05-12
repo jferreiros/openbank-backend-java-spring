@@ -1,5 +1,7 @@
 package openbank.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -13,13 +15,13 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 public class Loan {
     private int id;
     private String name;
-    private Number comission;
+    private BigDecimal comission;
     private int month;
 
     public Loan() {
     }
 
-    public Loan(String name, Number comission, int month) {
+    public Loan(String name, BigDecimal comission, int month) {
         this.name = name;
         this.comission = comission;
         this.month = month;
@@ -35,21 +37,21 @@ public class Loan {
     public void setId(int id) {
         this.id = id;
     }
-    @Column(name = "nombre")
+    @Column(name = "name")
     public String getNombre() {
         return name;
     }
     public void setNombre(String name) {
         this.name = name;
     }
-    @Column(name = "comision")
-    public Number getComision() {
+    @Column(name = "comission")
+    public BigDecimal getComision() {
         return comission;
     }
-    public void setComision(Number comission) {
+    public void setComision(BigDecimal comission) {
         this.comission = comission;
     }
-    @Column(name = "meses")
+    @Column(name = "month")
     public int getMeses() {
         return month;
     }

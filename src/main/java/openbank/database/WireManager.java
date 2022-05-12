@@ -31,19 +31,19 @@ public class WireManager {
     	}    	
     }
 
-    public Wire read(int id) {
-        Session session = sessionFactory.openSession();
-        Wire wire = session.get(Wire.class, id);
-        session.close();
-        return wire;
-    }
-
     public List<Wire> read() {
 		Session session = sessionFactory.openSession();
     	Query<Wire> query = session.createQuery("select c from Wire c", Wire.class);
 		List<Wire> wires = query.getResultList();
     	session.close();
 		return wires;
+    }
+
+	public Wire read(int id) {
+        Session session = sessionFactory.openSession();
+        Wire wire = session.get(Wire.class, id);
+        session.close();
+        return wire;
     }
 
     public Wire create(Wire wire) {

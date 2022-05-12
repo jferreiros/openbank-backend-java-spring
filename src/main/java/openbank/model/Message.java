@@ -48,7 +48,7 @@ public class Message {
         this.id = id;
     }
 
-    @Column(name = "id_origen")
+    @Column(name = "id_sender")
     public int getId_origen() {
         return id_sender;
     }
@@ -57,7 +57,7 @@ public class Message {
         this.id_sender = id_sender;
     }
 
-    @Column(name = "id_destino")
+    @Column(name = "id_receiver")
     public int getId_destino() {
         return id_receiver;
     }
@@ -66,7 +66,7 @@ public class Message {
         this.id_receiver = id_receiver;
     }
 
-    @Column(name = "texto")
+    @Column(name = "text")
     public String getTexto() {
         return text;
     }
@@ -75,7 +75,7 @@ public class Message {
         this.text = text;
     }
 
-    @Column(name = "fecha")
+    @Column(name = "date")
     public Timestamp getFecha() {
         return date;
     }
