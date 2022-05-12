@@ -27,9 +27,10 @@ public class Manager {
     private String password;
     @Column(name = "email")
     private String email;    
-    @OneToMany(targetEntity = Client.class, mappedBy = "manager", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Client> clients = new ArrayList<Client>();
+
+    // @OneToMany(targetEntity = Client.class, mappedBy = "manager", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // @JsonIgnore
+    // private List<Client> clients = new ArrayList<Client>();
 
     public Manager() {}
 
@@ -65,22 +66,22 @@ public class Manager {
         this.email = email;
     }
 
-    public void addClient(Client client) {
-        clients.add(client);
-        client.setManager(this);
-    }
+    // public void addClient(Client client) {
+    //     clients.add(client);
+    //     client.setManager(this);
+    // }
 
-    public List<Client> getClients() {
-      return clients;
-    }
+    // public List<Client> getClients() {
+    //   return clients;
+    // }
 
 
-    public void setClients(ArrayList<Client> clients) {
-      this.clients = clients;
-      for (int i = 0; i < clients.size(); i++) {
-          clients.get(i).setManager(this);
-      }
-    }
+    // public void setClients(ArrayList<Client> clients) {
+    //   this.clients = clients;
+    //   for (int i = 0; i < clients.size(); i++) {
+    //       clients.get(i).setManager(this);
+    //   }
+    // }
 
     @Override
     public String toString() {

@@ -5,20 +5,23 @@
 <hibernate-configuration>       
   <session-factory>
     <!-- Database connection settings -->
-    <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://127.0.0.1:3306/bank</property>
     <property name="connection.username">root</property>
     <property name="connection.password">Valencia9562??</property>
-    <property name="show_sql">true</property> -->
+    <property name="show_sql">true</property>
 
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://127.0.0.1:3307/bank</property>
     <property name="connection.username">root</property>
     <property name="connection.password"></property>
-    <property name="show_sql">true</property>
+    <property name="show_sql">true</property> -->
 
     <mapping class="openbank.model.Client" />       
     <mapping class="openbank.model.Manager" />
+    <mapping class="openbank.model.Wire" />
+    <mapping class="openbank.model.Loan" />
+    <mapping class="openbank.model.Message" />
     <!-- <mapping class="com.openbank.openbank.model.Loan" />       
     <mapping class="com.openbank.openbank.model.Message" />
     <mapping class="com.openbank.openbank.model.Wire" /> -->

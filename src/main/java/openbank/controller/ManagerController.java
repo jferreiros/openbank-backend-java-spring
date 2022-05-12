@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import openbank.database.ManagerManager;
 import openbank.model.Manager;
 import openbank.model.ManagerResponse;
-import openbank.model.ManagerUpdateRequest;
+// import openbank.model.ManagerUpdateRequest;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -48,14 +48,32 @@ public class ManagerController {
     }
 
     @PutMapping("/managers")
-    public ManagerResponse putGestores(@RequestBody ManagerUpdateRequest managerRequest) {
+    public ManagerResponse putGestores(@RequestBody Manager manager) {
         try {
-            Manager manager = managerRequest.getManager();
-            manager.setClients(managerRequest.getClients());
             return new ManagerResponse(managerManager.update(manager));
         } catch (Exception exception) {
             return new ManagerResponse(exception);
         }
     }
+
+    @DeleteMapping("/managers")
+    public ManagerResponse deleteGestores(@RequestBody Manager manager) {
+        try {
+            return new ManagerResponse(managerManager.delete(manager));
+        } catch (Exception exception) {
+            return new ManagerResponse(exception);
+        }
+    }
+
+    // @PutMapping("/managers")
+    // public ManagerResponse putGestores(@RequestBody ManagerUpdateRequest managerRequest) {
+    //     try {
+    //         Manager manager = managerRequest.getManager();
+    //         manager.setClients(managerRequest.getClients());
+    //         return new ManagerResponse(managerManager.update(manager));
+    //     } catch (Exception exception) {
+    //         return new ManagerResponse(exception);
+    //     }
+    // }
 
 }

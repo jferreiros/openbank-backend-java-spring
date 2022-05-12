@@ -12,6 +12,7 @@ import openbank.model.ClientResponse;
 public class ClientController {
     
     static ClientManager clientManager;
+    
 
     public ClientController() {
         clientManager = new ClientManager();
